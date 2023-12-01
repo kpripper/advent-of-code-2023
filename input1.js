@@ -1,5 +1,4 @@
-module.exports = `
-29lzrxseven
+module.exports = `29lzrxseven
 9nnqljsixkzphvtmtr
 five73kskpfgbkcltwoccvf
 fiveq7
@@ -998,5 +997,4 @@ one5seven
 45five7fivegpzhcfbbfiveqhnhhzdqtnltgnkrxz
 kfjzhdtgkjtqthree7pvmxs
 7two5one8
-3eighteightllkbxkbs9zgznxtj8lfflcst
-`
+3eighteightllkbxkbs9zgznxtj8lfflcst`

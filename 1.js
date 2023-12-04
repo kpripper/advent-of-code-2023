@@ -2,15 +2,9 @@
 
 let input = require("./input1")
 
-let input2 = `two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen`
+let input2 = `eighttwo257djtdp5two`
 
-let rows = input2.split("\n")
+let rows = input.split("\n")
 
 let res = 0
 
@@ -36,22 +30,24 @@ function replaceWords(row) {
     }
   }
 
-  let indexedWords = Object.entries(wordIndexes); //[ [ 'two', 4 ], [ 'three', 7 ], [ 'eight', 0 ] ]  
-  
-  indexedWords.sort((a, b) => a[1] - b[1]);
+  let indexedWords = Object.entries(wordIndexes) //[ [ 'two', 4 ], [ 'three', 7 ], [ 'eight', 0 ] ]
 
-  let sortedKeys = indexedWords.map(entry => entry[0]); // ['eight', 'two', 'three']
-  
-   row = row.replace(sortedKeys[0], wordsToNumbers[sortedKeys[0]])
-   row = row.replace(sortedKeys[sortedKeys.length-1], wordsToNumbers[sortedKeys[sortedKeys.length-1]])
- 
-  console.log('new rowww', row)
+  indexedWords.sort((a, b) => a[1] - b[1])
+
+  let sortedKeys = indexedWords.map((entry) => entry[0]) // ['eight', 'two', 'three']
+
+  row = row.replace(sortedKeys[0], wordsToNumbers[sortedKeys[0]])
+
+  row = row.replaceAll(
+    sortedKeys[sortedKeys.length - 1],
+    wordsToNumbers[sortedKeys[sortedKeys.length - 1]]
+  )
+
   return row
 }
 
-for (let row of rows) {
-  
-  row = replaceWords(row)
+for (let rowInit of rows) {
+  let row = replaceWords(rowInit)
 
   let firstNumber = ""
   let lastNumber = ""

@@ -2,9 +2,12 @@
 
 let input = require("./input1")
 
-let input2 = `eighttwo257djtdp5two`
+let input2 = `
+383nineeight9eightjfdhmjfrj
 
-let rows = input.split("\n")
+`
+
+let rows = input2.split("\n")
 
 let res = 0
 
@@ -21,28 +24,40 @@ function replaceWords(row) {
     nine: "9",
   }
 
-  let wordIndexes = {}
+  console.log("row", row)
+  //   let regex = new RegExp(Object.keys(wordsToNumbers).join("|"), "g")
+  //   let matches = row.match(regex)
+  //   if (matches) {
+  //   console.log(`Слово  знайдено ${matches} `)
+  //     let firstWord = matches[0]
+  //     let lastWord = matches[matches.length - 1]
 
-  for (let word in wordsToNumbers) {
-    if (row.includes(word)) {
-      let startIndex = row.indexOf(word)
-      wordIndexes[word] = startIndex
+  //     row = row.replace(firstWord, wordsToNumbers[firstWord])
+  //     row = row.replace(lastWord, wordsToNumbers[lastWord])
+  //   } else {
+  //  //   console.log(`Слово не знайдено у ${row}`)
+  //   }
+
+  let keys = Object.keys(wordsToNumbers)
+  let matches = []
+
+  for (let i = 0; i < row.length; i++) {
+    for (let key of keys) {
+      if (row.substring(i).startsWith(key)) {
+        matches.push(key)
+      }
     }
   }
 
-  let indexedWords = Object.entries(wordIndexes) //[ [ 'two', 4 ], [ 'three', 7 ], [ 'eight', 0 ] ]
+  console.log(matches)
 
-  indexedWords.sort((a, b) => a[1] - b[1])
+  let firstWord = matches[0]
+  let lastWord = matches[matches.length - 1]
 
-  let sortedKeys = indexedWords.map((entry) => entry[0]) // ['eight', 'two', 'three']
+  row = row.replace(firstWord, wordsToNumbers[firstWord])
+  row = row.replace(lastWord, wordsToNumbers[lastWord])
 
-  row = row.replace(sortedKeys[0], wordsToNumbers[sortedKeys[0]])
-
-  row = row.replaceAll(
-    sortedKeys[sortedKeys.length - 1],
-    wordsToNumbers[sortedKeys[sortedKeys.length - 1]]
-  )
-
+  console.log("row", row)
   return row
 }
 
@@ -65,7 +80,7 @@ for (let rowInit of rows) {
       break
     }
   }
-
+  console.log(firstNumber, lastNumber)
   res = res + +(firstNumber + lastNumber)
 }
 

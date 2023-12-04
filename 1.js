@@ -31,7 +31,7 @@ function calc(row) {
   let keys = Object.keys(wordsToNumbers)
   let matches = []
 
-  //finds occurrences in a string that overlap each other
+  //finds occurrences in a string that overlap each other 
   for (let i = 0; i < row.length; i++) {
     for (let key of keys) {
       if (row.substring(i).startsWith(key)) {
